@@ -1,9 +1,12 @@
 package com.example.cruddemo.entity;
 
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Primary;
+
+import java.security.Key;
 
 @Entity
-@Table(name="student")
+@Table(name="student") // Map the entity class to DB
 public class Student {
     //define fields
     @Id
@@ -20,6 +23,8 @@ public class Student {
     @Column(name="email")
     private String email;
 
+
+
     //define constructors
     public Student(){
 
@@ -30,8 +35,7 @@ public class Student {
         this.lastname = lastname;
         this.email = email;
     }
-
-    //define getter/setters
+    //define getter and setters
 
     public int getId() {
         return id;
@@ -66,15 +70,15 @@ public class Student {
     }
 
 
-    //define toString() method
+    //defin toString() method
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", firstname=" + firstname +
-                ", lastname=" + lastname +
-                ", email=" + email +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

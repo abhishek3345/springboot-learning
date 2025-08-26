@@ -1,0 +1,11 @@
+package com.example.springcoredemo.common;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class BaseballCoach implements Coach{
+    @Override
+    public String getDailyWorkout() {
+        return "Spend 20 mins in batting pratice";
+    }
+}
