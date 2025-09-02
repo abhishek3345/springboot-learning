@@ -1,10 +1,10 @@
-package com.example.cruddemo.dao;
+package com.example.cruddemo.service;
 
 import com.example.cruddemo.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService {
     List<Employee> findAll();
 
     Employee findById(int theId);
