@@ -9,30 +9,28 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class DemoSecurityConfig {
 
+// add support for JDBC ... no hardcode users
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager(){
-        UserDetails sat = User.builder()
-                .username("sat")
-                .password("{noop}sat123")
-                .roles("EMPLOYEE")
-                .build();
-        UserDetails yog = User.builder()
-                .username("yog")
-                .password("{noop}yog123")
-                .roles("EMPLOYEE","MANAGER")
-                .build();
-        UserDetails adm = User.builder()
-                .username("adm")
-                .password("{noop}adm123")
-                .roles("EMPLOYEE","MANAGER","ADMIN")
-                .build();
+    public UserDetailsManager userDetailsManager(DataSource dataSource){
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        // define query to retrieve a user by username
+        jdbcUserDetailsManager.setUsersByUsernameQuery(
+                "select user_id, pw, active from members where user_id=?");
 
-        return new InMemoryUserDetailsManager(sat,yog,adm);
+        // define query to retrieve the roles by username
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+                "select user_id, role from roles where user_id=?");
+
+        return jdbcUserDetailsManager;
     }
 
     @Bean
@@ -56,5 +54,29 @@ public class DemoSecurityConfig {
         return http.build();
 
     }
+    // HardCoded Users...
+        /*
+    @Bean
+    public InMemoryUserDetailsManager userDetailsManager(){
+        UserDetails sat = User.builder()
+                .username("sat")
+                .password("{noop}sat123")
+                .roles("EMPLOYEE")
+                .build();
+        UserDetails yog = User.builder()
+                .username("yog")
+                .password("{noop}yog123")
+                .roles("EMPLOYEE","MANAGER")
+                .build();
+        UserDetails adm = User.builder()
+                .username("adm")
+                .password("{noop}adm123")
+                .roles("EMPLOYEE","MANAGER","ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(sat,yog,adm);
+    }
+
+     */
 
 }
