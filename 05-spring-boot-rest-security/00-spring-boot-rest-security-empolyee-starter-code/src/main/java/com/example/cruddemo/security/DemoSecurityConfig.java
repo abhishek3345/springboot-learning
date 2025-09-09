@@ -16,23 +16,23 @@ public class DemoSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(){
-        UserDetails hari = User.builder()
-                .username("hari")
-                .password("{noop}hari123")
+        UserDetails sat = User.builder()
+                .username("sat")
+                .password("{noop}sat123")
                 .roles("EMPLOYEE")
                 .build();
-        UserDetails atma = User.builder()
-                .username("atma")
-                .password("{noop}atma123")
+        UserDetails yog = User.builder()
+                .username("yog")
+                .password("{noop}yog123")
                 .roles("EMPLOYEE","MANAGER")
                 .build();
-        UserDetails jetha = User.builder()
-                .username("Jetha")
-                .password("{noop}jetha123")
+        UserDetails adm = User.builder()
+                .username("adm")
+                .password("{noop}adm123")
                 .roles("EMPLOYEE","MANAGER","ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(hari,atma,jetha);
+        return new InMemoryUserDetailsManager(sat,yog,adm);
     }
 
     @Bean
@@ -43,6 +43,7 @@ public class DemoSecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/api/employees/**").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.POST,"/api/employees").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.PUT,"/api/employees").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.PATCH,"/api/employees/**").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.DELETE,"/api/employees/**").hasRole("ADMIN")
         );
         //use HTTP Basic authentication
