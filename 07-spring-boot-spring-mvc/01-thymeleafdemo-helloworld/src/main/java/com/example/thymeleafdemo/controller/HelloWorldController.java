@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloWorldController {
@@ -21,8 +22,24 @@ public class HelloWorldController {
         return "helloworld";
     }
 
-    //need a controller method to readfrom data and
+    //need a controller method to read from data and
     //add data to the model
+
+    @RequestMapping("/processFormVersionThree")
+    public String processFormVersionThree(@RequestParam("studentName") String theName, Model model){
+        //with the annotation @RequestParam param from HTML form automatically read
+
+        //convert data to all caps
+       theName =  theName.toUpperCase();
+
+        //create message
+        String result = "Heyyy! Pal... " + theName ;
+
+        //add message to model
+        model.addAttribute("message",result);
+
+        return "helloworld" ;
+    }
 
     @RequestMapping("/processFormVersionTwo")
     public String letsShoutDude(HttpServletRequest request, Model model){
@@ -30,7 +47,7 @@ public class HelloWorldController {
         String theName = request.getParameter("studentName");
 
         //convert data to all caps
-       theName =  theName.toUpperCase();
+        theName =  theName.toUpperCase();
 
         //create message
         String result = "Heyyy! " + theName ;
@@ -39,7 +56,5 @@ public class HelloWorldController {
         model.addAttribute("message",result);
 
         return "helloworld" ;
-
-
     }
 }
