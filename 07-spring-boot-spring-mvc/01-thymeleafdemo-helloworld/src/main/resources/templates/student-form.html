@@ -15,11 +15,14 @@
 
     <select th:field="*{country}">
 
-        <option th:value="USA">United States</option>
-        <option th:value="Canada">Canada</option>
-        <option th:value="UK">United Kingdom</option>
-        <option th:value="Australia">Australia</option>
-        <option th:value="India">India</option>
+        <option th:each="tempCountry : ${countries}"
+                th:value="${tempCountry}"
+                th:text="${tempCountry}"/>
+<!--        <option th:value="USA">United States</option>-->
+<!--        <option th:value="Canada">Canada</option>-->
+<!--        <option th:value="UK">United Kingdom</option>-->
+<!--        <option th:value="Australia">Australia</option>-->
+<!--        <option th:value="India">India</option>-->
 
     </select>
     <br><br>
