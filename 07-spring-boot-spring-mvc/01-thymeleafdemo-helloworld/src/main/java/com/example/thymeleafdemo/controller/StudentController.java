@@ -19,11 +19,11 @@ public class StudentController {
     @Value("${languages}")
     List<String>Languages;
 
-    @Value("${os}")
+    @Value("${opSys}")
     List<String>OS;
 
     @GetMapping("/showStudentForm")
-    public String shwoFrom(Model theModel){
+    public String showFrom(Model theModel){
         //create a student object
         Student theStudent = new Student();
 
@@ -36,7 +36,9 @@ public class StudentController {
         theModel.addAttribute("languages",Languages);
 
         //add favOS list to the model from application.properties
-        theModel.addAttribute("os",OS);
+        theModel.addAttribute("opSys",OS);
+        //debug
+
         return "student-form" ;
     }
 

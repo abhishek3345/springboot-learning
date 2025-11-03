@@ -39,12 +39,12 @@
 
     Favorite Operating System:
     <input type="checkbox" th:field="*{favoriteOS}"
-           th:each="tempOS : ${os}"
+           th:each="tempOS : ${opSys}"
            th:value="${tempOS}"
            th:text="${tempOS}" />
 <!--    <input type="checkbox" th:field="*{favoriteOS}" th:value="Linux">Linux</input>-->
 <!--    <input type="checkbox" th:field="*{favoriteOS}" th:value="MAC">Mac</input>-->
-<!--    <input type="checkbox" th:field="*{favoriteOS}" th:value="'Ms Windows'">MS Windows</input>-->
+<!--    <input type="checkbox" th:field="*{favoriteOS}" th:value="'MS Windows'">MS Windows</input>-->
 
     <br><br>
     <input type="submit" value="Submit">
