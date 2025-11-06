@@ -22,11 +22,18 @@
           th:errors="*{lastName}"
           class="error"></span>
     <br><br>
-    Free Passes:
+    Free Passes(*):
     <input type="text" th:field="*{freePasses}" />
     <!-- Add error message (if present) -->
     <span th:if="${#fields.hasErrors('freePasses')}"
           th:errors="*{freePasses}"
+          class="error"></span>
+    <br><br>
+    PIN Code:
+    <input type="text" th:field="*{pinCode}" />
+    <!-- Add error message (if present) -->
+    <span th:if="${#fields.hasErrors('pinCode')}"
+          th:errors="*{pinCode}"
           class="error"></span>
     <br><br>
     <input type="submit" value="Submit" />
