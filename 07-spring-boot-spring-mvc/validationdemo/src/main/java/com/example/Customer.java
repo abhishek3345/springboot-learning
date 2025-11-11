@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.validation.CourseCode;
 import jakarta.validation.constraints.*;
 
 public class Customer {
@@ -16,6 +17,9 @@ public class Customer {
 
     @Pattern(regexp = "^[0-9]{6}",message = "PIN Code must be 6 digits")
     private String pinCode;
+
+    @CourseCode(value = "APP", message = "must start with APP")
+    private String courseCode;
 
     public String getFirstName() {
         return firstName;
@@ -47,5 +51,13 @@ public class Customer {
 
     public void setPinCode(String pinCode) {
         this.pinCode = pinCode;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 }
