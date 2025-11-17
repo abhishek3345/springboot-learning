@@ -1,6 +1,6 @@
-package com.example.cruddemo.service;
+package com.example.thymeleafdemo.service;
 
-import com.example.cruddemo.entity.Employee;
+import com.example.thymeleafdemo.entity.Employee;
 
 import java.util.List;
 

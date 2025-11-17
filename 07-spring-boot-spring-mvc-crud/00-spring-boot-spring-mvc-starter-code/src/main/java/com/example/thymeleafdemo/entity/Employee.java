@@ -1,4 +1,4 @@
-package com.example.cruddemo.entity;
+package com.example.thymeleafdemo.entity;
 
 import jakarta.persistence.*;
 

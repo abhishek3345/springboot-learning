@@ -1,9 +1,8 @@
-package com.example.cruddemo.service;
+package com.example.thymeleafdemo.service;
 
-import com.example.cruddemo.dao.EmployeeRepository;
-import com.example.cruddemo.entity.Employee;
+import com.example.thymeleafdemo.dao.EmployeeRepository;
+import com.example.thymeleafdemo.entity.Employee;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

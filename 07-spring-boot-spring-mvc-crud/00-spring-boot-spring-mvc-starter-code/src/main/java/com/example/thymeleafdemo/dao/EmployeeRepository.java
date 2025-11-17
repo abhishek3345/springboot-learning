@@ -1,6 +1,6 @@
-package com.example.cruddemo.dao;
+package com.example.thymeleafdemo.dao;
 
-import com.example.cruddemo.entity.Employee;
+import com.example.thymeleafdemo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
