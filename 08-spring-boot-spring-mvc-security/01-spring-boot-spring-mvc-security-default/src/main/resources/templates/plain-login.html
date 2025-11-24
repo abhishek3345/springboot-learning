@@ -7,6 +7,9 @@
         .failed {
             color:red;
         }
+        .success {
+            color:green;
+        }
     </style>
 </head>
 <body>
@@ -15,6 +18,11 @@
     <!-- check for login error -->
     <div th:if="${param.error}">
         <i class="failed">Invalid username/password</i>
+    </div>
+
+    <!-- check for logout -->
+    <div th:if="${param.logout}">
+        <i class="success">User Logged out!</i>
     </div>
     <p>
         User name: <input type="text" name="username" />

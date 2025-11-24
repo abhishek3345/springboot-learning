@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Spring Labs Home Page</title>
@@ -7,6 +7,14 @@
 <body>
 <h2>SpringLabs Home Page</h2>
 <hr>
-Welcome to SpringLab home page!!!!
+<p>
+    Welcome to SpringLab home page!!!!
+</p>
+
+<hr>
+<form action="#" th:action="@{/logout}" method="POST">
+    <input type="Submit" value="Logout">
+</form>
+
 </body>
 </html>
