@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Spring Labs Home Page</title>
@@ -11,6 +11,27 @@
     Welcome to SpringLab home page!!!!
 </p>
 
+<hr>
+    <!--dispay the username and role -->
+<p>
+    User: <span sec:authentication="principal.username"></span>
+    <br><br>
+    Role(s): <span sec:authentication="principal.authorities"></span>
+</p>
+
+<hr>
+<!-- add a link to point to /leaders .. this is for managers -->
+<p>
+    <a th:href="@{/leaders}">Leadership Meeting</a>
+    (only for Manager )
+</p>
+
+<hr>
+<!-- add a link to point to /systems .. this is for managers -->
+<p>
+    <a th:href="@{/systems}">IT System Meeting</a>
+    (only for Admin )
+</p>
 <hr>
 <form action="#" th:action="@{/logout}" method="POST">
     <input type="Submit" value="Logout">
