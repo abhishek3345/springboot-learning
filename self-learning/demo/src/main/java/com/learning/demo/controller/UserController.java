@@ -50,8 +50,8 @@ public class UserController {
         Optional<User> opUser = userRepository.findById(id);
         if (opUser.isPresent()) {
 
-            opUser.get().setName(user.getName());
-            opUser.get().setEmail(user.getEmail());
+            opUser.get().setUsername(user.getUsername());
+            opUser.get().setPassword(user.getPassword());
             userRepository.save(opUser.get());
             return ResponseEntity.status(HttpStatus.OK).body(opUser.get());
         } else {
@@ -63,7 +63,7 @@ public class UserController {
     public ResponseEntity<User> pathUser(@PathVariable int id, @RequestBody String email){
         Optional<User> opUser = userRepository.findById(id);
         if(opUser.isPresent()){
-            opUser.get().setEmail(email);
+            opUser.get().setPassword(email);
             userRepository.save(opUser.get());
             return ResponseEntity.ok(opUser.get());
         }else{

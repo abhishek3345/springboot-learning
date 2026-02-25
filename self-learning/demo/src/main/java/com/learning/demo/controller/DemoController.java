@@ -5,6 +5,9 @@ import com.learning.demo.repository.UserRepository;
 import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @RestController
 public class DemoController {
 
@@ -25,7 +28,7 @@ public class DemoController {
 
     @GetMapping("/user")
     public User user(){
-        return new User(1,"Jetha", "jetha@gm.com");
+        return new User(1,"Jetha", "jetha@gm.com", Set.of("seller"));
     }
     @PostMapping("/user")
     public User user(@RequestParam User user){

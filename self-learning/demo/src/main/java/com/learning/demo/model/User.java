@@ -1,56 +1,54 @@
 package com.learning.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jdk.jfr.Enabled;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.management.ConstructorParameters;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name="users")
+@Getter
+@Setter
+
+@Table(name="user")
 public class User {
     @Id
-    private int id;
-    private String name ;
-    private String email;
+    @Column(name = "userid")
+    private int userid;
 
-    public User(){}
+    @Column(unique = true, name = "username")
+    private String username;
 
-    public User(int id, String name, String email){
-        this.id = id;
-        this.name = name;
-        this.email = email;
+    @Column(name = "password")
+    private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"))
+    @Column(name = "role")
+    private Set<String> roles = new HashSet<>();
+
+
+    public User() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public User(int userid, String username, String password, Set<String> roles) {
+        this.userid = userid;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }
+
