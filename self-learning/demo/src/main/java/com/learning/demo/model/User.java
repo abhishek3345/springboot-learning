@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Setter
 
 @Table(name="user")
-public class User implements UserDetails {
+public class User  {
     @Id
     @Column(name = "userid")
     private int userid;
@@ -57,45 +57,11 @@ public class User implements UserDetails {
                 '}';
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+      public Collection<? extends GrantedAuthority> getAuthorities(){
         return this.roles.stream()
-                .map(SimpleGrantedAuthority::new)
+                .map(role -> new SimpleGrantedAuthority(role))
                 .collect(Collectors.toList());
-    }
-    @Override
-    public String getUsername(){
-        return username;
-    }
-
-    @Override
-    public String getPassword(){
-        return password;
-    }
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
-    }
-    //  public Collection<? extends GrantedAuthority> getAuthorities(){
-//        return this.roles.stream()
-//                .map(role -> new SimpleGrantedAuthority(role))
-//                .collect(Collectors.toList());
-//  }
+  }
 
 
 }
