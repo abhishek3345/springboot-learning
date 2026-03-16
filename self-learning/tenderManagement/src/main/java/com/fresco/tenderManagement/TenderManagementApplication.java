@@ -9,5 +9,4 @@ public class TenderManagementApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TenderManagementApplication.class, args);
 	}
-
 }
