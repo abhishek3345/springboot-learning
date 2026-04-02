@@ -17,7 +17,7 @@ public class JWTUtil implements Serializable {
 
     private static final long serialVersionUID = 654352132132L;
     public static final long JWT_TOKEN_VALIDITY = 500 * 60 * 60; // token valid for 500 hours in milliseconds
-    private final String secretKey = "randomkey123";
+    private final String secretKey = "randomKey123";
 
     // extracts email (stored as subject) from the token
     public String getUsernameFromToken(String token) {
@@ -32,17 +32,21 @@ public class JWTUtil implements Serializable {
     // generic helper — applies any function to the claims object
     // e.g. Claims::getSubject extracts the subject field
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = getAllClaimsFromToken(token);
-        return claimsResolver.apply(claims);
-    }
-
-    // parses the token using the secret key and returns all claims
-    private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser()
+        final Claims claims = Jwts.parser()
                 .setSigningKey(secretKey)
                 .parseClaimsJws(token)
                 .getBody();
+
+        return claimsResolver.apply(claims);
     }
+
+//    // parses the token using the secret key and returns all claims
+//    private Claims getAllClaimsFromToken(String token) {
+//        return Jwts.parser()
+//                .setSigningKey(secretKey)
+//                .parseClaimsJws(token)
+//                .getBody();
+//    }
 
     // returns true if token expiry date is before right now
     private Boolean isTokenExpired(String token) {
@@ -53,19 +57,29 @@ public class JWTUtil implements Serializable {
     // called from LoginController after successful authentication
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, userDetails.getUsername()); // username = email
-    }
+        String subject = userDetails.getUsername();
 
-    // builds and signs the JWT string
-    private String doGenerateToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(subject)                       // email goes here
+                .setSubject(subject)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
                 .signWith(SignatureAlgorithm.HS512, secretKey)
                 .compact();
+
+        //return doGenerateToken(claims, userDetails.getUsername()); // username = email
     }
+
+//    // builds and signs the JWT string
+//    private String doGenerateToken(Map<String, Object> claims, String subject) {
+//        return Jwts.builder()
+//                .setClaims(claims)
+//                .setSubject(subject)                       // email goes here
+//                .setIssuedAt(new Date())
+//                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
+//                .signWith(SignatureAlgorithm.HS512, secretKey)
+//                .compact();
+//    }
 
     // checks: email in token matches the user AND token is not expired
     public Boolean validateToken(String token, UserDetails userDetails) {
