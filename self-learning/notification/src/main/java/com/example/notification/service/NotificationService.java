@@ -18,6 +18,8 @@ public class NotificationService {
 
     public Notification sendNotification(Notification notification) {
         try {
+            notification.setStatus("SENDING");
+            notificationRepository.save(notification);
             // Only send email if channel is EMAIL
             if ("EMAIL".equalsIgnoreCase(notification.getChannel())) {
                 sendRealEmail(notification);

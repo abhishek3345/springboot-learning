@@ -21,7 +21,9 @@ public class Notification {
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
-        status = "PENDING";
+        if(status == null) {
+            status = "PENDING";
+        }
     }
 
     // Getters and Setters (Right-click → Generate → Getter/Setter)
