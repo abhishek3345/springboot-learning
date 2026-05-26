@@ -47,7 +47,13 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .authorizeRequests()
                 // public — anyone can access
-                .antMatchers("/api/public/**").permitAll()
+                .antMatchers(
+                        "/api/public/**",
+                        "/h2-console/**",
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/swagger-ui.html"
+                ).permitAll()
                 // consumer endpoints — only CONSUMER role
                 .antMatchers("/api/auth/consumer/**").hasAuthority("CONSUMER")
                 // seller endpoints — only SELLER role

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="00f76c87-7c3f-4546-a53f-72730d94b8e1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/ECommerceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/ECommerceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/ApiAuthenticationEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/ApiAuthenticationEntryPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/ApiSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/ApiSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/config/JwtUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/ConsumerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/ConsumerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/MyExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/MyExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/PublicController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/PublicController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/SellerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/controllers/SellerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Cart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/CartProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/CartProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/RoleGrantedAuthority.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/RoleGrantedAuthority.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/CartProductRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/CartProductRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/CartRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/CartRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/CategoryRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/CategoryRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/ProductRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/ProductRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/UserRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/repo/UserRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/service/UserAuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/classes/com/fresco/ecommerce/service/UserAuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ecommerce/target/test-classes/com/fresco/ecommerce/ECommerceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ecommerce/target/test-classes/com/fresco/ecommerce/ECommerceApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatbot/ChatbotApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatbot/config/RestTemplateConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatbot/controller/ChatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatbot/service/ChatService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/chatbot/ChatbotApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="3BkKPzoFvcE0NlQ27L2D9V4f0Ei" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.ChatbotApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/tata/springboot-learning/self-learning/chat",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <setting name="addClasspath" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00f76c87-7c3f-4546-a53f-72730d94b8e1" name="Changes" comment="" />
+      <created>1775027608494</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775027608494</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

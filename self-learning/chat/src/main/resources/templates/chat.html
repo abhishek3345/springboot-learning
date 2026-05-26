@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chat Room</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial; height: 100vh; display: flex; flex-direction: column; background: #f0f2f5; }
+        .header { background: #0084ff; color: white; padding: 15px; display: flex; justify-content: space-between; }
+        .chat-container { flex: 1; display: flex; flex-direction: column; max-width: 800px; margin: 0 auto; width: 100%; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .messages { flex: 1; padding: 20px; overflow-y: auto; }
+        .message { margin-bottom: 15px; padding: 10px; background: #f1f1f1; border-radius: 8px; }
+        .message-header { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 12px; color: #666; }
+        .message-content { word-wrap: break-word; }
+        .join-message { text-align: center; color: #666; font-style: italic; margin: 10px 0; }
+        .input-area { padding: 20px; border-top: 1px solid #ddd; display: flex; }
+        #messageInput { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; margin-right: 10px; }
+        button { padding: 10px 20px; background: #0084ff; color: white; border: none; border-radius: 20px; cursor: pointer; }
+        .logout-btn { background: #dc3545; }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <div class="header">
+        <h3>Chat Room</h3>
+        <div>
+            <span th:text="${username}"></span>
+            <a href="/logout" class="logout-btn" style="color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px;">Logout</a>
+        </div>
+    </div>
+
+    <div class="messages" id="messages">
+        <div th:each="msg : ${oldMessages}">
+            <div th:if="${msg.type.toString() == 'CHAT'}" class="message">
+                <div class="message-header">
+                    <strong th:text="${msg.sender.fullName}"></strong>
+                    <span th:text="${#temporals.format(msg.timestamp, 'HH:mm')}"></span>
+                </div>
+                <div class="message-content" th:text="${msg.content}"></div>
+            </div>
+            <div th:if="${msg.type.toString() != 'CHAT'}" class="join-message" th:text="${msg.content}"></div>
+        </div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="messageInput" placeholder="Type a message..." autocomplete="off">
+        <button id="sendButton">Send</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script>
+    let stompClient = null;
+    const username = '[[${username}]]';
+
+    function connect() {
+        const socket = new SockJS('/ws');
+        stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, onConnected, onError);
+    }
+
+    function onConnected() {
+        stompClient.subscribe('/topic/public', onMessageReceived);
+
+        stompClient.send("/app/chat.addUser", {}, JSON.stringify({
+            sender: username,
+            type: 'JOIN'
+        }));
+    }
+
+    function onError(error) {
+        console.error('Could not connect to WebSocket server');
+    }
+
+    function sendMessage() {
+        const messageInput = document.getElementById('messageInput');
+        const messageContent = messageInput.value.trim();
+
+        if(messageContent && stompClient) {
+            const chatMessage = {
+                content: messageContent,
+                type: 'CHAT'
+            };
+
+            stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+            messageInput.value = '';
+        }
+    }
+
+    function onMessageReceived(payload) {
+        const message = JSON.parse(payload.body);
+        const messagesDiv = document.getElementById('messages');
+
+        const messageElement = document.createElement('div');
+
+        if(message.type === 'CHAT') {
+            messageElement.className = 'message';
+            messageElement.innerHTML = `
+                    <div class="message-header">
+                        <strong>${message.sender.fullName}</strong>
+                        <span>${new Date(message.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                    </div>
+                    <div class="message-content">${message.content}</div>
+                `;
+        } else {
+            messageElement.className = 'join-message';
+            messageElement.textContent = message.content;
+        }
+
+        messagesDiv.appendChild(messageElement);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    document.getElementById('sendButton').addEventListener('click', sendMessage);
+    document.getElementById('messageInput').addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') sendMessage();
+    });
+
+    connect();
+</script>
+</body>
+</html>
