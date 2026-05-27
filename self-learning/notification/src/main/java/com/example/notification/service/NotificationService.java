@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 
 @Service
 public class NotificationService {
@@ -39,6 +41,11 @@ public class NotificationService {
         return notificationRepository.save(notification);
     }
 
+    @Retryable(
+            value = {Exception.class},
+            maxAttempts = 3,
+            backoff = @Backoff(delay = 2000, multiplier = 2)
+    )
     private void sendRealEmail(Notification notification) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(notification.getRecipient());

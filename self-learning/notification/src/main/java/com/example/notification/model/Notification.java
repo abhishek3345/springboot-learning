@@ -14,6 +14,8 @@ public class Notification {
     private String channel;  // EMAIL, SMS, IN_APP
     private String recipient;
     private String subject;
+
+    @Column(columnDefinition = "TEXT")
     private String body;
     private String status;   // PENDING, SENT, FAILED
     private LocalDateTime createdAt;
